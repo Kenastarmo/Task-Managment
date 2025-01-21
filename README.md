@@ -3,7 +3,8 @@
 A modern, feature-rich todo application built with React, Redux, and TypeScript. This application provides a beautiful and intuitive interface for managing tasks with advanced features like drag-and-drop, filtering, and categorization.
 
 ![Todo App Screenshot]
-<img src="https://imgur.com/a/G4p0zWn"></img>
+https://imgur.com/8sqNtDL
+
 
 ## Features
 
