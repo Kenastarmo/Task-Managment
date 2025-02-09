@@ -6,11 +6,12 @@ import ToDoSection from "./ToDoSection";
 type ToDoListProps = {
   todos: ToDo[];
   onDelete: (id: string) => void;
+  onUpdate: (updatedTodo: ToDo) => void;
   onStatusChange: (id: string, status: ToDoStatus) => void;
   onChangePriority: (id: string, priority: ToDoPriority) => void;
 };
 
-const ToDoList = ({ todos, onDelete, onStatusChange, onChangePriority }: ToDoListProps) => {
+const ToDoList = ({ todos, onDelete, onStatusChange, onChangePriority, onUpdate }: ToDoListProps) => {
   const filterByPriorities = (priority: ToDoPriority): ToDo[] => {
     return todos.filter((todo) => todo.priority === priority);
   };
@@ -22,6 +23,7 @@ const ToDoList = ({ todos, onDelete, onStatusChange, onChangePriority }: ToDoLis
         title={"High Priority"}
         priority={"high"}
         onDelete={onDelete}
+        onUpdate={onUpdate}
         onStatusChange={onStatusChange}
         onChangePriority={onChangePriority}
       ></ToDoSection>
@@ -30,6 +32,7 @@ const ToDoList = ({ todos, onDelete, onStatusChange, onChangePriority }: ToDoLis
         title={"Medium Priority"}
         priority={"medium"}
         onDelete={onDelete}
+        onUpdate={onUpdate}
         onStatusChange={onStatusChange}
         onChangePriority={onChangePriority}
       ></ToDoSection>
@@ -38,6 +41,7 @@ const ToDoList = ({ todos, onDelete, onStatusChange, onChangePriority }: ToDoLis
         title={"Low Priority"}
         priority={"low"}
         onDelete={onDelete}
+        onUpdate={onUpdate}
         onStatusChange={onStatusChange}
         onChangePriority={onChangePriority}
       ></ToDoSection>

@@ -8,13 +8,14 @@ type ToDoSectionProps = {
   filteredToDos: ToDo[];
   title: string;
   priority: "high" | "medium" | "low";
+  onUpdate: (updatedTodo: ToDo) => void;
   onDelete: (id: string) => void;
   onStatusChange: (id: string,  status: ToDoStatus) => void;
   onChangePriority: (id: string, priority: ToDoPriority) => void;
 };
 
-const ToDoSection = ({ filteredToDos, title, priority, onDelete, onStatusChange, onChangePriority }: ToDoSectionProps) => {
-  console.log("ovo je title prvoj ", filteredToDos[0]?.title);
+const ToDoSection = ({ filteredToDos, title, priority, onDelete, onStatusChange, onChangePriority, onUpdate }: ToDoSectionProps) => {
+  //console.log("ovo je title prvoj ", filteredToDos[0]?.title);
 
   const [{ isOver }, drop] = useDrop(() => ({
     accept: 'todo',
@@ -51,14 +52,9 @@ const ToDoSection = ({ filteredToDos, title, priority, onDelete, onStatusChange,
         {filteredToDos.map((todo) => {
           return (
             <ToDoItem
-              id={todo.id}
-              title={todo.title}
-              description={todo.description}
-              status={todo.status}
-              priority={todo.priority}
-              startDate={todo.startDate}
-              endDate={todo.endDate}
+              todo={todo}
               onDelete={onDelete}
+              onUpdate={onUpdate}
               onStatusChange={onStatusChange}
               onChangePriority={onChangePriority}
             ></ToDoItem>

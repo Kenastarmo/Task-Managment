@@ -18,7 +18,7 @@ const Dashboard = ({todos}: DashboardProps) => {
   console.log("ovo je velicina todo niza ", todos?.length)
 
   return (
-    <div className="dashboard w-80 flex flex-col bg-red p-8 gap-[50px] border-r border-r-solid border-r-[#00000012]">
+    <div className="dashboard sm:w-fulll md:w-80 flex flex-col bg-red p-8 gap-[50px] border-r border-r-solid border-r-[#00000012]">
       <div className="flex flex-row gap-3">
         <div className="p-4 bg-[#f3f4f6] rounded-full	border border-solid border-[#00000012]">
           <User size={48} color="#0061e0" strokeWidth={1.5} />

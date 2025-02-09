@@ -6,13 +6,14 @@ import { useDispatch, useSelector } from "react-redux";
 import { v4 as uuidv4 } from "uuid";
 import { DndProvider } from 'react-dnd';
 import { HTML5Backend } from 'react-dnd-html5-backend';
+import { ToDo } from "./types/toDo";
 
 /**Components */
 import Dashboard from "./components/Dashboard";
 import { CreateTodoDialog } from "./components/CreateTodo";
 import { RootState } from "./store/store";
 import { ToDo, ToDoPriority, ToDoStatus } from "./types/toDo";
-import { addToDo, deleteToDo, updateToDoStatus, updateToDoPriority } from "./store/todoSlice";
+import { addToDo, deleteToDo, updateTodo, updateToDoStatus, updateToDoPriority } from "./store/todoSlice";
 import ToDoList from "./components/ToDoList";
 
 function App() {
@@ -46,23 +47,27 @@ function App() {
     dispatch(deleteToDo(id))
   } 
 
+  const handleUpdateTodo = (updatedTodo: ToDo) => {
+    dispatch(updateTodo(updatedTodo))
+  }
+
   const handleChangeStatus = (id: string, newStatus: ToDoStatus) => {
     dispatch(updateToDoStatus({ id, status: newStatus}));
   } 
 
-  const handleChangePriority = (id:string, priority: ToDoPriority) => {
+  const handleChangePriority = (id: string, priority: ToDoPriority) => {
     dispatch(updateToDoPriority({ id, priority }))
   }
 
   return (
     <DndProvider backend={HTML5Backend}>
-    <div className="w-full min-h-screen flex flex-row justify-start">
+    <div className="w-full min-h-screen flex flex-col md:flex-row justify-start ">
       <Dashboard
       todos={todos}
       ></Dashboard>
-      <div className="flex-1 flex flex-col justify-start items-center bg-[#f3f4f6] p-8">
-        <div className="max-w-[90%] min-w-[90%]">
-          <div className="w-full flex justify-between mt-[30px]">
+      <div className="flex-1 flex flex-col justify-start items-center bg-[#f3f4f6] p-4 md:p-8">
+        <div className="max-w-[100%] min-w-[100%] md:max-w-[90%] md:min-w-[90%]">
+          <div className="w-full flex justify-between mt-[10px] md:mt-[30px]">
             <h1 className="text-[42px] font-bold text-start text-[#000000]">
               Task Manager
             </h1>
@@ -71,6 +76,7 @@ function App() {
           <ToDoList 
           todos={todos} 
           onDelete={handleDelete}
+          onUpdate={handleUpdateTodo}
           onStatusChange={handleChangeStatus}
           onChangePriority={handleChangePriority}>
           </ToDoList>

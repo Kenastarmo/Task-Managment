@@ -1,5 +1,4 @@
 import React from 'react'
-import { ToDoStatus } from '@/types/toDo'
 import { CheckCircle2, Clock, Loader2 } from 'lucide-react';
 
 

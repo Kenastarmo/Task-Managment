@@ -6,11 +6,13 @@ export type ToDo = {
     id: string;
     title: string;
     description: string;
-    priority: string;
-    category: string;
+    // priority: string;
+    priority: ToDoPriority;
+    // category: string;
+    category: ToDoCategory;
     status: string;
     createdAt: string;
     startDate: string;
     endDate: string;
-    comment?: string;
+    comment?: string | undefined;
 }

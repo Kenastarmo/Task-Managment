@@ -26,7 +26,14 @@ export const toDoSlice = createSlice({
         },
 
         deleteToDo : (state, action: PayloadAction<string>) => {
-            state.todos = state.todos.filter( todo => todo.id !== action.payload)
+            state.todos = state.todos.filter(todo => todo.id !== action.payload)
+        },
+
+        updateTodo : (state, action: PayloadAction<ToDo>) => {
+            const index = state.todos.findIndex(todo => todo.id === action.payload.id)
+            if(index !== -1){
+                state.todos[index] = action.payload
+            }
         },
         
         updateToDoStatus : (state, action: PayloadAction<{ id: string, status: ToDoStatus }>) => {
@@ -48,6 +55,7 @@ export const toDoSlice = createSlice({
 export const {
     addToDo,
     deleteToDo,
+    updateTodo,
     updateToDoStatus,
     updateToDoPriority,
 } = toDoSlice.actions;
